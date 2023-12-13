@@ -4,26 +4,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Bootstrap Project</title>
+    <link rel="icon" href="http://example.com/favicon.png">
+    <title>FUJIRO</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <!-- Custom CSS -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap');
         body {
-            background-color: #363062; 
+            font-family: 'Kanit', sans-serif;
+            background-color: rgba(0, 0, 0,0.8);
             color: #ecf0f1;
             margin: 0;
         }
 
    
         .navbar {
-            
+            position: sticky;
             background: #353935; 
+            text-align: center;
+            padding: 10px 20px;
+
+        }
+
+        .navbar-nav {
+            display: flex; /* Use flex display for navbar-nav */
+            justify-content: center;
+        }
+
+        .navbar-nav .nav-item {
+            margin-right: 20px; /* Adjust the margin as needed */
+
+        }
+
+        .navbar-nav .nav-item:last-child {
+            margin-right: 0; /* Remove margin from the last item to avoid extra space */
         }
 
         .navbar-brand {
-            color: #ecf0f1 !important; 
+            color: #ecf0f1 !important;
+            font-weight: 500;
+            font-size: 35px;
         }
 
         .navbar-nav .nav-link {
@@ -34,86 +56,281 @@
             color: #ecf0f1 !important; 
         }
 
-    
-        .main-content {
-        
+        .navbar-nav .nav-item .nav-link {
+            position: relative;
+            padding-bottom: 8px; 
         }
+
+        .navbar-nav .nav-item .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%); 
+            background-color: white; 
+            transition: width 0.3s ease-in-out; 
+        }
+
+        .navbar-nav .nav-item:hover .nav-link:after {
+            width: 100%;
+            left: 0;
+            transform: none; 
+        }
+
+
         #home h2 {
-            font-size: 36px; /* Increased font size for impact */
-            color: #F5E8C7; /* Different color for the text */
-        }
+                font-size: 36px; 
+                color: #F5E8C7;
+            }
         #home {
-            padding: 50px;
-            text-align: center;
-            height: 100vh; /* Full viewport height */
+            position: relative;
+                padding: 50px;
+                text-align: center;
+                height: 100vh; 
+                overflow: hidden;
+            }
+        #video-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -1000;
+            }
+
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); 
+            z-index: -999; 
         }
 
-        #about {
-            padding: 50px;
+        #content-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff; 
+            z-index: 1; 
             text-align: center;
-            opacity: 0; /* Initially hide the About section */
-            transition: opacity 1s ease; /* Add transition for opacity */
         }
 
-        /* Custom styles for the footer */
+        
+        #content-overlay h2 {
+            font-size: 36px; 
+                color: #F5E8C7; 
+        }
+
+        #content-overlay p {
+            font-size: 18px;
+            color: #F5E8C7;
+        }
+
+        #about, #join-us{
+                padding: 50px;
+                text-align: center;
+                opacity: 0;
+                transition: opacity 1s ease; 
+            }
+        #about.active,
+        #join-us.active{
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+
+        .hotel-card {
+                max-width: 300px;
+                margin: 20px auto;
+                border: none;
+                border-radius: 10px;
+                overflow: hidden;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+                transform: scale(1);
+                transition: transform 0.3s ease-in-out;
+            }
+
+        .hotel-card:hover {
+                transform: scale(1.05);
+            }
+
+        .hotel-card img {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+                border-bottom: 2px solid #ffffff;
+            }
+
+        .hotel-card-body {
+                padding: 15px;
+                text-align: center;
+            }
+
+        .hotel-card-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #F5E8C7; /* Green color for the title */
+            }
+
+        .hotel-card-price {
+                font-size: 18px;
+                color: #3498db; /* Blue color for the price */
+                margin-bottom: 10px;
+            }
+
+        .btn-reserve {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #e74c3c; /* Red color for the button */
+                color: #ffffff; /* White text color */
+                text-decoration: none;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease-in-out;
+            }
+
+        .btn-reserve:hover {
+                background-color: #c0392b; /* Darker red color on hover */
+            }
+
+        .join-us-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #363062; /* Red color for the button */
+            color: #F5E8C7; /* White text color */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .join-us-button:hover {
+            background-color: #1c1744; /* Darker red color on hover */
+            transform: scale(1.05); /* Scale the button on hover */
+        }    
+            
         footer {
-            background-color: #435585; 
-            color: #ecf0f1;
-            padding: 30px 0;
-        }
+                background-color: #435585; 
+                color: #ecf0f1;
+                padding: 30px 0;
+                width: 100%;
+
+                
+            }
 
         footer a {
-            color: #F5E8C7;
-            text-decoration: none;
-        }
+                color: #F5E8C7;
+                text-decoration: none;
+            }
 
         footer a:hover {
-            text-decoration: none;
-        }
+                text-decoration: none;
+            }
 
         .social-icons {
-            font-size: 24px;
-            margin-right: 10px;
-        }
+                font-size: 24px;
+                margin-right: 10px;
+            }
 
-       
+        
     </style>
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid d-flex justify-content-center"> <!-- Center the content -->
+        <div class="container-fluid text-center">
             <a class="navbar-brand" href="#">FUJIRO</a>
-            <div class="collapse navbar-collapse">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item ">
+                    <li class="nav-item">
                         <a class="nav-link" href="#home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#join-us">Join Us</a>
+                    </li>
                 </ul>
             </div>
             <span class="navbar-text">
-                <a class="btn btn-outline-light" style="color: black;" onmouseover="this.style.color='black'" onmouseout="this.style.color=''">Login</a>
-
+                <a class="btn btn-outline-light" style="color: rgb(255, 255, 255);" onmouseover="this.style.color='black'" onmouseout="this.style.color=''">Login</a>
             </span>
         </div>
     </nav>
-
-    <!-- Main Content -->
+    
     <div id="home">
+    <video id="video-background" autoplay muted loop>
+        <source src="..\assets\pexels_videos_1826904 (1080p).mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="overlay"></div>
+
+    <div id="content-overlay">
         <h2>Choose <strong>FUJIRO</strong></h2>
         <p>Discover the perfect stay with <strong>FUJIRO</strong>, where we bring you a world of hotels at your fingertips. </p>
     </div>
+</div>
 
-    <!-- About Section -->
     <div id="about">
-        <h2>About Section</h2>
-        <p>Your about content goes here.</p>
+        <h2>Your Travel Companion</h2>
+        <p><strong>Fujiro</strong> was born out of a passion for travel and a desire to make the process of finding and booking hotels a seamless and enjoyable experience.</p>
+        <p>Our team of travel enthusiasts envisioned a platform that goes beyond the ordinary, providing a curated selection of stays that cater to the unique preferences of each traveler.</p>
     </div>
-
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-lg-4">
+                <div class="hotel-card">
+                <img src="..\assets\pexels-ritesh-singh-15741322.jpg" alt="Hotel Image">
+                    <div class="hotel-card-body">
+                        <div class="hotel-card-title">Luxury Resort</div>
+                        <div class="hotel-card-price">300€ per night</div>
+                        <a href="#" class="btn btn-reserve">Reserve Now</a>
+                    </div>
+             </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="hotel-card">
+                <img src="..\assets\pexels-ritesh-singh-15741322.jpg" alt="Hotel Image">
+                <div class="hotel-card-body">
+                    <div class="hotel-card-title">Luxury Resort</div>
+                    <div class="hotel-card-price">300€ per night</div>
+                    <a href="#" class="btn btn-reserve">Reserve Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="hotel-card">
+                <img src="..\assets\pexels-ritesh-singh-15741322.jpg" alt="Hotel Image">
+                <div class="hotel-card-body">
+                    <div class="hotel-card-title">Luxury Resort</div>
+                    <div class="hotel-card-price">300€ per night</div>
+                    <a href="#" class="btn btn-reserve">Reserve Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div id="join-us" class="container mt-5">
+        <h2 class="text-center">Join the <strong>Fujiro</strong> Community</h2>
+        <p class="text-center">Become a part of the Fujiro community and embark on a journey where every stay is an experience.</p> 
+        <p>Whether you're a globetrotter or a first-time traveler, Fujiro is here to redefine the way you plan and book your accommodations.</p>
+        <button class="join-us-button">Join Now</button>
+    </div>
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -136,9 +353,9 @@
                 <div class="col-md-4">
                     <h5>Connect With Us</h5>
                     <a href="" class="social-icons"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="social-icons"><i class="bi bi-twitter"></i></a>
+                    <a href="" class="social-icons"><i class="bi bi-twitter"></i></a>
                     <a href="https://github.com/kikoribeiro/fujiro" class="social-icons"><i class="bi bi-github"></i>
-                    <a href="#" class="social-icons"><i class="bi bi-instagram"></i></a>
+                    <a href="" class="social-icons"><i class="bi bi-instagram"></i></a>
                 </div>
             </div>
         </div>
@@ -149,25 +366,46 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
     <!-- Bootstrap Icons -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.21.0/font/bootstrap-icons.css"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            window.addEventListener("scroll", revealAboutSection);
+    <!-- ... (previous code) ... -->
 
-            function revealAboutSection() {
-                var aboutSection = document.getElementById("about");
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Check if the element is in the viewport
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
 
-                // Calculate the distance of the About section from the top of the viewport
-                var aboutSectionTop = aboutSection.getBoundingClientRect().top;
+        // Function to handle the scroll event
+        function handleScroll() {
+            var aboutSection = document.getElementById('about');
+            var joinUsSection = document.getElementById('join-us');
 
-                // Check if the top of the About section is visible in the viewport
-                if (aboutSectionTop < window.innerHeight) {
-                    aboutSection.style.opacity = "1";
-                } else {
-                    aboutSection.style.opacity = "0";
-                }
+            if (isElementInViewport(aboutSection)) {
+                aboutSection.classList.add('active');
+            } else {
+                aboutSection.classList.remove('active'); // Add this line to remove the class when not in viewport
             }
-        });
-    </script>
+
+            if (isElementInViewport(joinUsSection)) {
+                joinUsSection.classList.add('active');
+            } else {
+                joinUsSection.classList.remove('active'); // Add this line to remove the class when not in viewport
+            }
+        }
+
+        // Attach the handleScroll function to the scroll event
+        window.addEventListener('scroll', handleScroll);
+
+        // Trigger the handleScroll function on page load
+        handleScroll();
+    });
+</script>
 
 </body>
 
