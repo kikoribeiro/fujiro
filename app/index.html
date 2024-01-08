@@ -66,8 +66,8 @@
             width: 0;
             height: 2px;
             bottom: 0;
-            left: 50%;
-            transform: translateX(-50%); 
+            left: 100%;
+            transform: translateX(-100%); 
             background-color: white; 
             transition: width 0.3s ease-in-out; 
         }
@@ -330,7 +330,7 @@
         <p>Whether you're a globetrotter or a first-time traveler, Fujiro is here to redefine the way you plan and book your accommodations.</p>
         <button class="join-us-button">Join Now</button>
     </div>
-    <!-- Footer -->
+    
     <footer>
         <div class="container">
             <div class="row">
@@ -360,16 +360,15 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS and dependencies -->
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
-    <!-- Bootstrap Icons -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.21.0/font/bootstrap-icons.css"></script>
-    <!-- ... (previous code) ... -->
+ 
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Check if the element is in the viewport
+      
         function isElementInViewport(el) {
             var rect = el.getBoundingClientRect();
             return (
@@ -380,7 +379,7 @@
             );
         }
 
-        // Function to handle the scroll event
+      
         function handleScroll() {
             var aboutSection = document.getElementById('about');
             var joinUsSection = document.getElementById('join-us');
@@ -388,20 +387,20 @@
             if (isElementInViewport(aboutSection)) {
                 aboutSection.classList.add('active');
             } else {
-                aboutSection.classList.remove('active'); // Add this line to remove the class when not in viewport
+                aboutSection.classList.remove('active'); 
             }
 
             if (isElementInViewport(joinUsSection)) {
                 joinUsSection.classList.add('active');
             } else {
-                joinUsSection.classList.remove('active'); // Add this line to remove the class when not in viewport
+                joinUsSection.classList.remove('active'); 
             }
         }
 
-        // Attach the handleScroll function to the scroll event
+        
         window.addEventListener('scroll', handleScroll);
 
-        // Trigger the handleScroll function on page load
+        
         handleScroll();
     });
 </script>
