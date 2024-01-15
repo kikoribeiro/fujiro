@@ -1,8 +1,8 @@
 <?php
 session_start();
-require 'config.php'; // Include your database configuration file
+require 'config.php'; 
 
-// Validate and process the reservation form data
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
     $hotel_id = isset($_SESSION['hotel_id']) ? $_SESSION['hotel_id'] : null;
