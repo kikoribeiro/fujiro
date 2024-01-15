@@ -1,4 +1,5 @@
 <?php
+
     require 'config.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -15,10 +16,9 @@
 
     try {
         $stmt->execute();
-        echo "Registration successful!";
-        header("Location: home.php");
+        header("Location:/fujiro/fujiro/app/home.php");
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
     }
-?>
+
