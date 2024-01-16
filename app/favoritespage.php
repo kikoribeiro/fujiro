@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-    require 'conn/hotels.php';
+    require 'conn/favorite.php';
     require 'conn/require_login.php';
     ?>
 <head>
@@ -11,7 +11,6 @@
     <title>FUJIRO</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap');
@@ -53,16 +52,12 @@
         i{
           padding-right: 5px;
         }
-        .favorite-icon {
-        color: red; 
-        cursor: pointer;
-    }
      </style>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg border-bottom navbar-custom">
     <div class="container-fluid"> 
-        <a class="navbar-brand" href="">Fu<span style="color: #0056b3;">jiro</span></a>
+        <a class="navbar-brand" href="home.php">Fu<span style="color: #0056b3;">jiro</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -102,7 +97,7 @@
   </div>
   <div>
   <?php
-    showHotels();
+    showFavoriteHotels($pdo, $_SESSION['user_id']);
   ?>
   </div>
  
@@ -128,24 +123,7 @@
             hotelCards[i].style.display = 'block'; 
         }
     }
-    
   </script>
-  <script>
-    $(document).ready(function () {
-    $('.favorite-icon').click(function (e) {
-        e.preventDefault();
-        var hotelId = $(this).data('hotel-id');
-        console.log('Clicked on hotel ID:', hotelId); 
-
-        $.get('conn/toggle_favorite.php', { hotel_id: hotelId }, function () {
-            console.log('Toggle favorite success!'); 
-            location.reload();
-        }).fail(function (xhr, status, error) {
-            console.error('Toggle favorite failed:', error); 
-        });
-    });
-});
-</script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

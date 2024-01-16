@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['email'] = $user['email'];
 
         if ($user['admin'] == 1) {
-            header("Location: admin_dashboard.php");
+            header("Location: /fujiro/fujiro/app/adminhome.php");
             exit();
         } else {
             header("Location:/fujiro/fujiro/app/home.php");

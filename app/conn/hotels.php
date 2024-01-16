@@ -18,7 +18,7 @@ function showHotels() {
                 echo '<div class="row g-0">';
         
                 echo '<div class="col-md-4">';
-                echo '<img src="path/to/photo.jpg" alt="' . $hotel['name'] . '" class="img-fluid rounded-start">';
+                echo '<img src="/fujiro/fujiro/assets/pexels-pixabay-258154.jpg" alt="' . $hotel['name'] . '" class="img-fluid rounded-start">';
                 echo '</div>';
                 
                 echo '<div class="col-md-8">';
@@ -32,6 +32,7 @@ function showHotels() {
                 for ($i = 1; $i <= $hotel['evaluation']; $i++) {
                     echo '<i class="bi bi-star-fill" style="color: gold;"></i>';
                 }
+                echo '<a class="favorite-icon" href="toggle_favorite.php?hotel_id=' . $hotel['hotel_id'] . '"><i class="bi ' . ($hotel['is_favorite'] ? 'bi-heart-fill' : 'bi-heart') . '"></i></a>';
                 echo '</p>';
                 echo '<a href="reservationpage.php?hotel_id=' . $hotel['hotel_id'] . '" class="btn btn-primary">Make Reservation</a>';
                 echo '</div>';

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-    require 'conn/hotels.php';
+    require 'conn/hotelsadmin.php';
     require 'conn/require_login.php';
     ?>
 <head>
@@ -102,7 +102,7 @@
   </div>
   <div>
   <?php
-    showHotels();
+    showHotelsAdmin();
   ?>
   </div>
  
@@ -130,22 +130,6 @@
     }
     
   </script>
-  <script>
-    $(document).ready(function () {
-    $('.favorite-icon').click(function (e) {
-        e.preventDefault();
-        var hotelId = $(this).data('hotel-id');
-        console.log('Clicked on hotel ID:', hotelId); 
-
-        $.get('conn/toggle_favorite.php', { hotel_id: hotelId }, function () {
-            console.log('Toggle favorite success!'); 
-            location.reload();
-        }).fail(function (xhr, status, error) {
-            console.error('Toggle favorite failed:', error); 
-        });
-    });
-});
-</script>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>

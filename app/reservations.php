@@ -67,7 +67,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <div class="collapse navbar-collapse ml-auto " id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item "> 
-                  <a class="nav-link" href=""><i class="bi bi-heart"></i>Favorites</a>
+                  <a class="nav-link" href="favoritespage.php"><i class="bi bi-heart"></i>Favorites</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="reservations.php"><i class="bi bi-calendar-check"></i>Reservations</a>
