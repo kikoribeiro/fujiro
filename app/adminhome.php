@@ -62,17 +62,14 @@
 <body>
   <nav class="navbar navbar-expand-lg border-bottom navbar-custom">
     <div class="container-fluid"> 
-        <a class="navbar-brand" href="">Fu<span style="color: #0056b3;">jiro</span></a>
+        <a class="navbar-brand" href="adminhome.php">Fu<span style="color: #0056b3;">jiro</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse ml-auto " id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item "> 
-                  <a class="nav-link" href="favoritespage.php"><i class="bi bi-heart"></i>Favorites</a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="reservations.php"><i class="bi bi-calendar-check"></i>Reservations</a>
+                    <a class="nav-link" href="admin_reservations.php"><i class="bi bi-calendar-check"></i>Reservations</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href=""><i class="bi bi-person"></i><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'USERNAME'; ?></a>

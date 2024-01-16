@@ -9,9 +9,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_reservation'])
         $stmt = $pdo->prepare("DELETE FROM reservations WHERE id = :reservation_id AND user_id = :user_id");
         $stmt->bindParam(':reservation_id', $reservation_id, PDO::PARAM_INT);
         $stmt->bindParam(':user_id', $_SESSION['user_id'], PDO::PARAM_INT);
-        $stmt->execute();
+
+        if ($stmt->execute()) {
+           
+        } else {
+         
+        }
 
         header("Location: /fujiro/fujiro/app/reservations.php");
         exit();
+    } else {
+        echo "Invalid reservation ID.";
     }
 }
