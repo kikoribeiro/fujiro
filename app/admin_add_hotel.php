@@ -30,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/png+xml" href="../assets/logo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Hotel</title>
             <style>
@@ -102,7 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="number" name="evaluation" required><br>
             <button type="submit" name="add_hotel">Add Hotel</button>
         </form>
-          
+        <p style="text-align: center; margin-top: 20px;">
+        <i class="bi bi-arrow-left"><a href="javascript:history.back()" style="text-decoration: none;">Go Back</a></i> 
     </div>   
 </body>
 </html>

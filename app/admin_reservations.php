@@ -14,10 +14,10 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png+xml" href="../assets/logo.png">
-    <title>FUJIRO</title>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <title>FUJIRO</title>
+
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;700&display=swap');
