@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="price">Price:</label>
             <input type="number" name="price" required><br>
             <label for="evaluation">Evaluation:</label>
-            <input type="number" name="evaluation" required><br>
+            <input type="number" min="1" max="5" name="evaluation" required><br>
             <button type="submit" name="add_hotel">Add Hotel</button>
         </form>
         <p style="text-align: center; margin-top: 20px;">
