@@ -68,6 +68,9 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <a class="nav-link" href="admin_reservations.php"><i class="bi bi-calendar-check"></i>Reservations</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="admin_add_hotel.php"><i class="bi bi-house-add"></i>Add Hotel</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href=""><i class="bi bi-person"></i><?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'USERNAME'; ?></a>
                 </li>
                 <li>
